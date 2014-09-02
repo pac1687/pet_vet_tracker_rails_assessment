@@ -33,4 +33,10 @@ class PetsController < ApplicationController
       render('pets/edit.html.erb')
     end
   end
+
+  def destroy
+    @pet = Pet.find(params[:id])
+    @pet.destroy
+    render('pets/destroy.html.erb')
+  end
 end
