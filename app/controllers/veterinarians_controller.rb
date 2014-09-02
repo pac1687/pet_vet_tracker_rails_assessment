@@ -13,7 +13,7 @@ class VeterinariansController < ApplicationController
   def create
     @veterinarian = Veterinarian.new(params[:veterinarian])
     if @veterinarian.save
-      render('veterinarians/success.html.erb')
+      redirect_to("/veterinarians/#{@veterinarian.id}")
     else
       @veterinarians = Veterinarian.all
       render('veterinarians/index.html.erb')

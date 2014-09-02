@@ -13,7 +13,7 @@ class PetsController < ApplicationController
   def create
     @pet = Pet.new(params[:pet])
     if @pet.save
-      render('pets/success.html.erb')
+      redirect_to("/pets/#{@pet.id}")
     else
       @pets = Pet.all
       render('pets/index.html.erb')

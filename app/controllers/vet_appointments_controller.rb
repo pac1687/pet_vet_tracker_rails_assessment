@@ -10,7 +10,7 @@ class VetAppointmentsController < ApplicationController
     @pet = Pet.find(params[:pet_id])
     @vet_appointment = VetAppointment.new(params[:vet_appointment])
     if @vet_appointment.save
-      render('vet_appointments/success.html.erb')
+      redirect_to("/pets/#{@pet.id}")
     else
       @veterinarians = Veterinarian.all
       render('vet_appointments/new.html.erb')
