@@ -34,9 +34,10 @@ class VetAppointmentsController < ApplicationController
     end
   end
 
-  # def destroy
-  #   @sighting = Sighting.find(params[:sighting_id])
-  #   @sighting.destroy
-  #   render('sightings/destroy.html.erb')
-  # end
+  def destroy
+    @vet_appointment = VetAppointment.find(params[:vet_appointment_id])
+    @vet_appointment.destroy
+    @pet = Pet.find(params[:pet_id])
+    render('vet_appointments/destroy.html.erb')
+  end
 end
