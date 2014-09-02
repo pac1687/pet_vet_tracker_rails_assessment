@@ -11,4 +11,25 @@
       data-method="delete"
       rel="nofollow">Delete</a></p>
 
+<p>Appointments:</p>
+
+<ol>
+  <% @pet.vet_appointments.each do |vet_appointment| %>
+    <li>
+      Veterinarian: <%= vet_appointment.veterinarian.name %>
+      <a href="/pets/<%= @pet.id %>/vet_appointments/<%= vet_appointment.id %>/edit">Edit</a> |
+      <a href="/pets/<%= @pet.id %>/vet_appointments/<%= vet_appointment.id %>"
+         data-confirm="You sure?"
+         data-method="delete"
+         rel="nofollow">Delete</a>
+      <ul>
+        <li>Description: <%= vet_appointment.description %></li>
+        <li>Note: <%= vet_appointment.note %></li>
+        <li>Cost: $<%= vet_appointment.cost %></li>
+        <li>Date: <%= vet_appointment.date %></li>
+      </ul>
+    </li>
+  <% end %>
+</ol>
+
 <p><a href="/pets">Return to Pets list</a></p>
