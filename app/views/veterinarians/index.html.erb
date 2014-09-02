@@ -1,0 +1,32 @@
+<h1>Pet Vet Tracker</h1>
+
+<ul>
+  <% @veterinarians.each do |veterinarian| %>
+    <li><a href="/veterinarians/<%= veterinarian.id %>"><%= veterinarian.name %></a></li>
+  <% end %>
+</ul>
+
+<h2>New Veterinarian</h2>
+
+<% if @veterinarian.errors.any? %>
+  <h3>Please fix these errors:</h3>
+  <ul>
+    <% @veterinarian.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<form action="/veterinarians" method="post">
+  <label for="veterinarian_name">Name</label>
+  <input id="veterinarian_name" name="veterinarian[name]" type="text" value="<%= @veterinarian.name %>">
+  <label for="veterinarian_phone">Phone</label>
+  <input id="veterinarian_phone" name="veterinarian[phone]" type="text" value="<%= @veterinarian.phone %>">
+  <label for="veterinarian_email">Email</label>
+  <input id="veterinarian_email" name="veterinarian[email]" type="text" value="<%= @veterinarian.email %>">
+  <label for="veterinarian_address">Address</label>
+  <input id="veterinarian_address" name="veterinarian[address]" type="text" value="<%= @veterinarian.address %>">
+  <button>Create Veterinarian</button>
+</form>
+
+<p><a href="/pets">Pets list</a></p>
