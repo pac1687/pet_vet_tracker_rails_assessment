@@ -19,4 +19,18 @@ class PetsController < ApplicationController
       render('pets/index.html.erb')
     end
   end
+
+  def edit
+    @pet = Pet.find(params[:id])
+    render('pets/edit.html.erb')
+  end
+
+  def update
+    @pet = Pet.find(params[:id])
+    if @pet.update(params[:pet])
+      render('pets/success.html.erb')
+    else
+      render('pets/edit.html.erb')
+    end
+  end
 end

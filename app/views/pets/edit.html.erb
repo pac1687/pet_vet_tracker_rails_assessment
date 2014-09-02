@@ -1,12 +1,4 @@
-<h1>Pet Vet Tracker</h1>
-
-<ul>
-  <% @pets.each do |pet| %>
-    <li><a href="/pets/<%= pet.id %>"><%= pet.name %></a></li>
-  <% end %>
-</ul>
-
-<h1>New Pet</h1>
+<h1>Edit Pet</h1>
 
 <% if @pet.errors.any? %>
   <h3>Please fix these errors:</h3>
@@ -17,7 +9,8 @@
   </ul>
 <% end %>
 
-<form action="/pets" method="post">
+<form action="/pets/<%= @pet.id %>" method="post">
+  <input name="_method" type="hidden" value="patch">
   <label for="pet_name">Name</label>
   <input id="pet_name" name="pet[name]" type="text" value="<%= @pet.name %>">
   <label for="pet_age">Age</label>
@@ -26,5 +19,5 @@
   <input id="pet_weight" name="pet[weight]" type="text" value="<%= @pet.weight %>">
   <label for="pet_kind">Kind</label>
   <input id="pet_kind" name="pet[kind]" type="text" value="<%= @pet.kind %>">
-  <button>Create Pet</button>
+  <button>Update Pet</button>
 </form>
