@@ -1,7 +1,7 @@
-<h1>Pets</h1>
+<h1>Pet Vet Tracker</h1>
 
 <ul>
   <% @pets.each do |pet| %>
-    <li><%= pet.name %></li>
+    <li><a href="/pets/<%= pet.id %>"><%= pet.name %></a></li>
   <% end %>
 </ul>
