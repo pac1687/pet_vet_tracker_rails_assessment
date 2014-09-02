@@ -17,25 +17,22 @@ class VetAppointmentsController < ApplicationController
     end
   end
 
-  # def edit
-  #   @regions = Region.all
-  #   @specie = Specie.find(params[:specie_id])
-  #   @sighting = Sighting.find(params[:sighting_id])
-  #   render('sightings/edit.html.erb')
-  # end
+  def edit
+    @veterinarians = Veterinarian.all
+    @pet = Pet.find(params[:pet_id])
+    @vet_appointment = VetAppointment.find(params[:vet_appointment_id])
+    render('vet_appointments/edit.html.erb')
+  end
 
-  # def update
-  #   @specie = Specie.find(params[:specie_id])
-  #   @sighting = Sighting.find(params[:sighting_id])
-  #   if @sighting.update(specie_id: params[:specie_id],
-  #                       longitude: params[:longitude],
-  #                       latitude: params[:latitude],
-  #                       region_id: params[:region_id])
-  #     render('sightings/success.html.erb')
-  #   else
-  #     render('sightings/edit.html.erb')
-  #   end
-  # end
+  def update
+    @pet = Pet.find(params[:pet_id])
+    @vet_appointment = VetAppointment.find(params[:vet_appointment_id])
+    if @vet_appointment.update(params[:vet_appointment])
+      render('vet_appointments/success.html.erb')
+    else
+      render('vet_appointments/edit.html.erb')
+    end
+  end
 
   # def destroy
   #   @sighting = Sighting.find(params[:sighting_id])
