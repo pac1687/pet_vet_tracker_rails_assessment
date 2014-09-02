@@ -1,21 +1,21 @@
 class VetAppointmentsController < ApplicationController
   def new
     @veterinarians = Veterinarian.all
-    pet = Pet.find(params[:pet_id])
-    @vet_appointment = pet.vet_appointments.new
+    @pet = Pet.find(params[:pet_id])
+    @vet_appointment = @pet.vet_appointments.new
     render('vet_appointments/new.html.erb')
   end
 
-  # def create
-  #   @specie = Specie.find(params[:specie_id])
-  #   @sighting = Sighting.new(specie_id: params[:specie_id], longitude: params[:longitude], latitude: params[:latitude], region_id: params[:region_id])
-  #   if @sighting.save
-  #     render('sightings/success.html.erb')
-  #   else
-  #     @regions = Region.all
-  #     render('sightings/new.html.erb')
-  #   end
-  # end
+  def create
+    @pet = Pet.find(params[:pet_id])
+    @vet_appointment = VetAppointment.new(params[:vet_appointment])
+    if @vet_appointment.save
+      render('vet_appointments/success.html.erb')
+    else
+      @veterinarians = Veterinarian.all
+      render('vet_appointments/new.html.erb')
+    end
+  end
 
   # def edit
   #   @regions = Region.all
