@@ -13,6 +13,7 @@ class PetsController < ApplicationController
   def create
     @pet = Pet.new(params[:pet])
     if @pet.save
+      flash[:notice] = "#{@pet.name} was added to the Pet Tracker."
       redirect_to("/pets/#{@pet.id}")
     else
       @pets = Pet.all

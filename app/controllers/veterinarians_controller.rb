@@ -13,6 +13,7 @@ class VeterinariansController < ApplicationController
   def create
     @veterinarian = Veterinarian.new(params[:veterinarian])
     if @veterinarian.save
+      flash[:notice] = "#{@veterinarian.name} was added to the Pet Tracker."
       redirect_to("/veterinarians/#{@veterinarian.id}")
     else
       @veterinarians = Veterinarian.all

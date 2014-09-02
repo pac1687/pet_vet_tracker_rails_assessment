@@ -10,6 +10,7 @@ class VetAppointmentsController < ApplicationController
     @pet = Pet.find(params[:pet_id])
     @vet_appointment = VetAppointment.new(params[:vet_appointment])
     if @vet_appointment.save
+      flash[:notice] = "Your vet appointment was added to the Pet Tracker."
       redirect_to("/pets/#{@pet.id}")
     else
       @veterinarians = Veterinarian.all
