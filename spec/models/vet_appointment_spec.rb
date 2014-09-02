@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe VetAppointment do
   it { should validate_presence_of :pet_id }
   it { should validate_presence_of :veterinarian_id }
