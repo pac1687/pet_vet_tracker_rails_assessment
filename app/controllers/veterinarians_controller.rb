@@ -29,7 +29,8 @@ class VeterinariansController < ApplicationController
   def update
     @veterinarian = Veterinarian.find(params[:id])
     if @veterinarian.update(params[:veterinarian])
-      render('veterinarians/success.html.erb')
+      flash[:notice] = "#{@veterinarian.name} was updated."
+      redirect_to("/veterinarians/#{@veterinarian.id}")
     else
       render('veterinarians/edit.html.erb')
     end
