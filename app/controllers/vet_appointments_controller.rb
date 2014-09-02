@@ -29,7 +29,8 @@ class VetAppointmentsController < ApplicationController
     @pet = Pet.find(params[:pet_id])
     @vet_appointment = VetAppointment.find(params[:vet_appointment_id])
     if @vet_appointment.update(params[:vet_appointment])
-      render('vet_appointments/success.html.erb')
+      flash[:notice] = "Your vet appointment was updated."
+      redirect_to("/pets/#{@pet.id}")
     else
       render('vet_appointments/edit.html.erb')
     end
