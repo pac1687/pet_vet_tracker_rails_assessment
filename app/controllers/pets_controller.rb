@@ -29,7 +29,8 @@ class PetsController < ApplicationController
   def update
     @pet = Pet.find(params[:id])
     if @pet.update(params[:pet])
-      render('pets/success.html.erb')
+      flash[:notice] = "#{@pet.name} was updated."
+      redirect_to("/pets/#{@pet.id}")
     else
       render('pets/edit.html.erb')
     end
