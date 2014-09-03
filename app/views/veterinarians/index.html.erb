@@ -1,5 +1,6 @@
 <h1>Pet Vet Tracker</h1>
 
+<h2>Veterinarians</h2>
 <ul>
   <% @veterinarians.each do |veterinarian| %>
     <li><a href="/veterinarians/<%= veterinarian.id %>"><%= veterinarian.name %></a></li>
@@ -21,5 +22,7 @@
   <%= render('form') %>
   <button>Create Veterinarian</button>
 </form>
+
+<br>
 
 <p><a href="/pets">Pets list</a></p>
