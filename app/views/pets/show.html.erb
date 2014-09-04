@@ -1,24 +1,27 @@
-<h1><%= @pet.name %></h1>
+<div class="page-header">
+  <h1><%= @pet.name %></h1>
+</div>
 
-<p>Name: <%= @pet.name %></p>
 <p>Age: <%= @pet.age %></p>
 <p>Weight: <%= @pet.weight %> lbs.</p>
 <p>Kind: <%= @pet.kind %></p>
 
-<p><a href="/pets/<%= @pet.id %>/edit">Edit</a></p>
-<p><a href="/pets/<%= @pet.id %>"
+<a class="btn btn-warning" href="/pets/<%= @pet.id %>/edit">Edit</a>
+<a class="btn btn-danger" href="/pets/<%= @pet.id %>"
       data-confirm="You sure?"
       data-method="delete"
-      rel="nofollow">Delete</a></p>
+      rel="nofollow">Delete</a>
 
-<p>Appointments:</p>
+<div class="page-header">
+  <h3>Appointments:</h3>
+</div>
 
 <ol>
   <% @pet.vet_appointments.each do |vet_appointment| %>
     <li>
       Veterinarian: <%= vet_appointment.veterinarian.name %>
-      <a href="/pets/<%= @pet.id %>/vet_appointments/<%= vet_appointment.id %>/edit">Edit</a> |
-      <a href="/pets/<%= @pet.id %>/vet_appointments/<%= vet_appointment.id %>"
+      <a class="btn btn-warning" href="/pets/<%= @pet.id %>/vet_appointments/<%= vet_appointment.id %>/edit">Edit</a> |
+      <a class="btn btn-danger" href="/pets/<%= @pet.id %>/vet_appointments/<%= vet_appointment.id %>"
          data-confirm="You sure?"
          data-method="delete"
          rel="nofollow">Delete</a>
@@ -32,6 +35,4 @@
   <% end %>
 </ol>
 
-<p><a href="/pets/<%= @pet.id %>/vet_appointments/new">Add Appointment</a></p>
-
-<p><a href="/pets">Return to Pets list</a></p>
+<a class="btn btn-primary" href="/pets/<%= @pet.id %>/vet_appointments/new">Add Appointment</a>
